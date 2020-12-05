@@ -4,7 +4,11 @@ module.exports = {
   preprocess: [
     sveltePreprocess({
       postcss: {
-        plugins: [require('autoprefixer'), require('postcss-nesting')],
+        plugins: [
+          require('autoprefixer'),
+          require('postcss-nesting'),
+          require('postcss-custom-properties')
+        ],
       },
     }),
   ],

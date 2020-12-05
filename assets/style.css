@@ -1,3 +1,76 @@
+:root {
+  --heading-fontstack: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+  --body-fontstack: Georgia, Times, 'Times New Roman', serif;
+  --background-colour: #e5e5dc;
+  --foreground-colour: #26495c;
+  --link-colour: #c66b3d;
+  --link-hover-colour: #e69871;
+  --accent-colour: #c4a35a;
+}
+
+html, body {
+  background: var(--background-colour, white);
+  color: var(--foreground-colour, black);
+  /* RGB(165, 174, 183), RGB(211, 169, 153) */
+}
+
+html.dark, html.dark body {
+  background: var(--foreground-colour, black);
+  color: var(--background-colour, white);
+  /* RGB(128, 132, 141), RGB(179, 180, 184) */
+}
+
+html.blue, html.blue body {
+  background: rgb(55, 66, 88);
+  color: rgb(235, 235, 235);
+  /* RRGB(173, 185, 201) */
+}
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 2em;
+}
+
+* {
+  font-family: var(--body-fontstack);
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-fontstack);
+  font-weight: normal;
+  margin-bottom: 1.2em;
+}
+
+h1 {
+  font-size: 70px;
+  line-height: 72px;
+  letter-spacing: -5px;
+}
+
+h2 {
+  font-size: 50px;
+  line-height: 52px;
+  letter-spacing: -3px;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--link-colour, blue);
+}
+
+a:hover {
+  color: var(--link-hover-colour, lightblue);
+}
+
 .code,
 code {
   padding: 0 0.25rem;
@@ -6,25 +79,4 @@ code {
   margin-right: 0.5rem;
   font-family: monospace;
   display: inline-block;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight: bold;
-  line-height: 2.35rem;
-}
-
-body {
-  margin: 0;
-  font-size: 16px;
-  line-height: 22px;
-  color: #06395a;
-  border-top: 10px solid #06395a;
-  padding-top: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
-  background: #f4f7fb;
 }

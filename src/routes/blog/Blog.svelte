@@ -49,7 +49,6 @@
 <svelte:head>
   <title>{frontmatter.title}</title>
 </svelte:head>
-<a href="/">&LeftArrow; Home</a>
 
 <div class="title">
   <h1>{frontmatter.title}</h1>

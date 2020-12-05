@@ -7,40 +7,31 @@
   export let foo;
 
   // add permalinks to the hook list so we can link to the posts.
-  const hooks = data.hookInterface.map((hook) => ({ ...hook, link: helpers.permalinks.hooks({ slug: hook.hook }) }));
+  // const hooks = data.hookInterface.map((hook) => ({ ...hook, link: helpers.permalinks.hooks({ slug: hook.hook }) }));
 </script>
 
 <style>
-  .banner {
-    padding: 1rem 2rem;
-    background: #eee;
-    border-radius: 2rem;
-    margin-bottom: 1rem;
-  }
-  .entries {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 3rem 0;
-  }
-
   @media (min-width: 768px) {
-    .entries {
+    .latest {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      margin: 3rem 0;
-    }
-    :global(.entries .entry) {
-      margin-right: 1rem;
+      grid-template: repeat(2, auto) / repeat(3, 1fr);
+      row-gap: 10px;
+      column-gap: 30px;
+      & h2 {
+        margin-bottom: .25em;
+      }
+      & .blog {
+        grid-area: 1 / 1 / 2 / 3;
+      }
+      & .elsewhere {
+        grid-area: 2 / 1 / 3 / 3;
+      }
+      & .feed {
+        grid-area: 1 / 3 / 3 / 4;
+      }
     }
   }
 
-  :global(.entry) {
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
-    background: white;
-  }
   .about {
     margin-bottom: 2rem;
   }
@@ -65,43 +56,35 @@
 </style>
 
 <svelte:head>
-  <title>Elder.js Template: Home</title>
+  <title>Andrew Bridge | Latest</title>
 </svelte:head>
 
-{#if data.testingHooks}
-  <div class="banner">
-    <p>Testing hooks worked</p>
-    {#if data.cpus}
-      <p>If you use Elder.js to build your site, it will span all {data.cpus.length} cpus listed below:</p>
-      <ol>
-        {#each data.cpus as cpu}
-          <li>{cpu.model}</li>
-        {/each}
-      </ol>
-    {/if}
+<h1>Latest</h1>
+
+<div class="latest">
+  <div class="blog">
+    <h2>Blog</h2>
+    <div class="entries">
+      {#each data.markdown.blog as blog}
+        <BlogTeaser {blog} {helpers} />
+      {/each}
+    </div>
   </div>
-{/if}
-
-<div class="banner">
-  <h1>Hello World: Welcome to Elder.js!</h1>
-  <p>Woot! You've got Elder.js installed. This template is designed to show you the ropes of how things work.</p>
-
-  <p>
-    We've tried to make this site a bit of a tutorial, but be sure to check out the full <a href="https://elderguide.com/tech/elderjs/">Elder.js
-      docs.</a>
-  </p>
-
-  <p>
-    Enjoy playing around with Elder.js and, if you hit a snag with the template, open a <a href="https://github.com/Elderjs/template/issues">GitHub
-      issue.</a>
-  </p>
-</div>
-
-<div class="blog">
-  <div class="entries">
-    {#each data.markdown.blog as blog}
-      <BlogTeaser {blog} {helpers} />
-    {/each}
+  <div class="elsewhere">
+    <h2>Elsewhere</h2>
+    <div class="entries">
+      {#each data.markdown.blog as blog}
+        <BlogTeaser {blog} {helpers} />
+      {/each}
+    </div>
+  </div>
+  <div class="feed">
+    <h2>Feed</h2>
+    <div class="entries">
+      {#each data.markdown.blog as blog}
+        <BlogTeaser {blog} {helpers} />
+      {/each}
+    </div>
   </div>
 </div>
 
@@ -113,7 +96,6 @@
   </p>
 
   <ul>
-    <li><a href={helpers.permalinks.simple({ slug: 'simple' })}>Simple</a> - A barebones route.</li>
     <li>Home - The page you are on.</li>
     <li>
       Blog - Linked from above, but you can also see a blog post by checking out: <a
@@ -186,8 +168,8 @@
   alt="Elder.js hook Lifecycle"
   style="max-width:100%; margin:1rem 0;" />
 
-<div class="hooks">
+<!-- <div class="hooks">
   {#each hooks as hook, i}
     <HookDetail {hook} {i} hookEntityDefinitions={data.hookEntityDefinitions} />
   {/each}
-</div>
+</div> -->
