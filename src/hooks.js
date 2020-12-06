@@ -38,6 +38,30 @@ const hooks = [
   // },
   {
     hook: 'bootstrap',
+    name: 'copyIconsToAssets',
+    description:
+      'Copies icons from the super-tiny-icons pack to the ./assets/. This function helps support the live reload process.',
+    run: ({ settings }) => {
+      // note that this function doesn't manipulate any props or return anything.
+      // It is just executed on the 'bootstrap' hook which runs once when Elder.js is starting.
+
+      const iconPath = path.resolve(settings.distDir, 'icons');
+      if (!fs.existsSync(iconPath)) {
+        fs.mkdirSync(iconPath);
+      }
+
+      return Promise.all(['github', 'stackoverflow', 'twitter', 'linkedin'].map(
+        icon => fs.promises
+          .copyFile(
+            path.resolve(settings.rootDir, './node_modules/super-tiny-icons/images/svg', `${icon}.svg`),
+            path.resolve(iconPath, `${icon}.svg`),
+          ),
+        )
+      );
+    },
+  },
+  {
+    hook: 'bootstrap',
     name: 'copyAssetsToPublic',
     description:
       'Copies ./assets/ to the "distDir" defined in the elder.config.js. This function helps support the live reload process.',

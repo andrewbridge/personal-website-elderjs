@@ -1,6 +1,16 @@
 <script>
+  import BlogSummaryListing from '../../components/BlogSummaryListing.svelte';
+
   export let data; // data is mainly being populated from the /plugins/edlerjs-plugin-markdown/index.js
-  const { html, frontmatter } = data;
+  export let helpers;
+
+  const isListing = !('html' in data) && !('frontmatter' in data);
+
+  let html;
+  let frontmatter = {};
+  if (!isListing) {
+    ({ html, frontmatter } = data);
+  }
 </script>
 
 <style>
@@ -15,9 +25,9 @@
     border-bottom: 1px solid #ddd;
   }
 
-  :global(h2) {
+  /* :global(h2) {
     margin-top: 2rem;
-  }
+  } */
 
   :global(pre) {
     background: #eee;
@@ -47,9 +57,16 @@
 </style>
 
 <svelte:head>
-  <title>{frontmatter.title}</title>
+  {#if isListing}
+  <title>Andrew Bridge | Blog</title>
+  {:else}
+  <title>Andrew Bridge | Blog | {frontmatter.title}</title>
+  {/if}
 </svelte:head>
 
+{#if isListing}
+<BlogSummaryListing isMain={true} order={[0,2,1]} limits={[10,20,10]} {helpers} {data} />
+{:else}
 <div class="title">
   <h1>{frontmatter.title}</h1>
   {#if frontmatter.author}<small>By {frontmatter.author}</small>{/if}
@@ -59,4 +76,5 @@
   {@html html}
 {:else}
   <h1>Oops!! Markdown not found!</h1>
+{/if}
 {/if}

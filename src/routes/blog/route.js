@@ -1,3 +1,5 @@
+const getExternalData = require('../../externalData.js');
+
 module.exports = {
   // WARNING: Here be dragons and magic of all sorts.
 
@@ -11,7 +13,10 @@ module.exports = {
 
   // This is telling the simple markdown plugin, which route to control.
 
-  data: {},
-  all: () => [],
-  permalink: ({ request }) => `/blog/${request.slug}/`,
+  data: async ({ data }) => {
+    data.externalData = await getExternalData();
+    return data;
+  },
+  all: () => [{ slug: '/blog' }],
+  permalink: ({ request }) => request.slug === '/blog' ? request.slug : `/blog/${request.slug}/`,
 };

@@ -14,6 +14,8 @@
 
     nav a {
         font-size: 28px;
+        text-decoration: none;
+        padding-left: 15px;
     }
 
     :global(html.dark) header {
@@ -24,7 +26,7 @@
 <header>
     <SiteLogo />
     <nav>
-        <a href="/">Home</a>
+        <a href="/about">About</a>
         <a href="/blog">Blog</a>
     </nav>
 </header>
