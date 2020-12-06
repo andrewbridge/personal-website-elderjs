@@ -50,7 +50,7 @@ const hooks = [
         fs.mkdirSync(iconPath);
       }
 
-      return Promise.all(['github', 'stackoverflow', 'twitter', 'linkedin'].map(
+      return Promise.all(['github', 'stackoverflow', 'twitter', 'linkedin', 'codepen'].map(
         icon => fs.promises
           .copyFile(
             path.resolve(settings.rootDir, './node_modules/super-tiny-icons/images/svg', `${icon}.svg`),

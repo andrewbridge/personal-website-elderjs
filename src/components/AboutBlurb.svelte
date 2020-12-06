@@ -17,4 +17,4 @@
   Powerful, beautiful, data-driven web experiences need to be accessible to all, performant across the board,
   and maintainable for more than one version (I'm looking at you AngularJS!)</p>
 {/if}
-<p>I currently work full-time, but you can <a href="/about/cv">take a look a my CV</a> if you'd like.</p>
+<p>I currently work full-time, but you can <a href="/about/cv">take a look at my CV</a> if you'd like.</p>

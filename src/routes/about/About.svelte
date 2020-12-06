@@ -1,5 +1,6 @@
 <script>
   import AboutBlurb from '../../components/AboutBlurb.svelte';
+  import SocialLinks from '../../components/SocialLinks.svelte';
 </script>
 
 <svelte:head>
@@ -7,6 +8,10 @@
 </svelte:head>
 
 <AboutBlurb isMain={true} />
+
+<hr />
+
+<SocialLinks />
 
 <hr />
 

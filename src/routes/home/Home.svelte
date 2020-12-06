@@ -74,6 +74,8 @@
 
   aside {
     display: flex;
+    align-items: flex-start;
+    margin-bottom: 2em;
     & .blurb {
       margin-left: 3em;
     }

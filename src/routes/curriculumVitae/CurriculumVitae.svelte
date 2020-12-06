@@ -4,10 +4,6 @@
 </svelte:head>
 
 <style lang="postcss">
-  @page {
-    margin: 1.5rem;
-  }
-
   header, section {
     & h1 {
       font-size: 28px;

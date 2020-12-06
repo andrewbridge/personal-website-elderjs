@@ -74,6 +74,24 @@ html.dark hr {
   border-bottom-color: var(--background-colour);
 }
 
+.overlay-link {
+  position: static;
+}
+.overlay-link:hover, .overlay-link:focus, .overlay-link:active {
+    text-decoration: underline;
+}
+.overlay-link:before {
+    bottom: 0;
+    content: '';
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    white-space: nowrap;
+    z-index: 1;
+}
+
 .code,
 code {
   padding: 0 0.25rem;
